@@ -91,7 +91,7 @@ class ImageToGcode():
                     
                     if firingVal:
                         
-                        self.output += "G1 X"+str(self.increment*column) + " Y" + str(y / 12 * self.spread) + " F" + str(self.feedrate) + "\n"
+                        self.output += "G1 X"+str(round(self.increment*column, 3)) + " Y" + str(round(y / 12 * self.spread, 3)) + " F" + str(self.feedrate) + "\n"
 
                         self.output += "G4 P0\n"
                         self.output += "M240"+ " S" +str(firingVal)+"\n"

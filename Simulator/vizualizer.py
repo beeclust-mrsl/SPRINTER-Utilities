@@ -34,6 +34,10 @@ class vizualize():
 		self.ax.add_patch(self.circle)
 
 
+		Writer = animation.writers['ffmpeg']
+		self.writer = Writer(fps=15, metadata=dict(artist='Me'), bitrate=1800)
+
+
 	def appendPath(self, x, y):
 		self.xPath = np.append(self.xPath, x)
 		self.yPath = np.append(self.yPath, y)
@@ -53,4 +57,5 @@ class vizualize():
 
 	def animate(self, callback, steps, freq):
 		anim = animation.FuncAnimation(self.grid, func=callback, frames=steps, interval=freq, repeat=False, blit=False)
+		anim.save('lines.mp4', writer=self.writer)
 		plt.show()
