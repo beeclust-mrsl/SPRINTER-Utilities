@@ -33,7 +33,6 @@ class vizualize():
 		self.circle = Circle((0, 0), radius=5, color='r',zorder=3)
 		self.ax.add_patch(self.circle)
 
-
 		Writer = animation.writers['ffmpeg']
 		self.writer = Writer(fps=15, metadata=dict(artist='Me'), bitrate=1800)
 
@@ -47,7 +46,6 @@ class vizualize():
 
 
 	def appendFeed(self, x, y):
-		#pass
 		self.ax.add_patch(Circle((x,y),radius=1, color='k', zorder=2))
 
 		
@@ -57,5 +55,5 @@ class vizualize():
 
 	def animate(self, callback, steps, freq):
 		anim = animation.FuncAnimation(self.grid, func=callback, frames=steps, interval=freq, repeat=False, blit=False)
-		anim.save('lines.mp4', writer=self.writer)
+		#anim.save('lines.mp4', writer=self.writer)
 		plt.show()

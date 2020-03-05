@@ -2,6 +2,7 @@ import socket
 import time
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
 
 host = ''
 port = 8080
