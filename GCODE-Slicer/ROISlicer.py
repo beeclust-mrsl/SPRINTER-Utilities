@@ -1,5 +1,16 @@
 #! /usr/bin/env python
 
+#------------------------------------------------------------------------------#
+#   This code slices a bitmap file into voronoi components based 			   #
+#	on given input seed points.        						 				   #
+#                                                                              #
+#   Usage:              python ROISlicer.py 						           #
+#                                                                              #
+#------------------------------------------------------------------------------#
+#   Author: Kedar Karpe (https://github.com/karpenet)                          #
+#   Copyright Beeclust - Multi Robot Systems Lab, 2020                         #
+#------------------------------------------------------------------------------#
+
 import numpy as np
 import cv2
 import math
@@ -13,7 +24,7 @@ class imageSlice():
 		self.yMax, self.xMax = self.img.shape
 
 
-	def getVoronoiTest(self, centroids):
+	def getVoronoi(self, centroids):
 		sliceNum = np.shape(centroids)[0]
 
 		self.slice = 255 * np.ones(self.img.shape, dtype = self.img.dtype)
@@ -45,5 +56,6 @@ class imageSlice():
 
 if __name__ == '__main__':
 	test = imageSlice('./BMP/test4.bmp')
-	test.getVoronoiTest([(100,250), (300,250), (250,100), (250,300)])
+	test.getVoronoi([(100,250), (300,250), (250,100), (250,300)])
 	test.saveBMP()
+	

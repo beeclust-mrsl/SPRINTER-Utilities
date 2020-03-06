@@ -19,7 +19,7 @@ import termcolor
 import ast
 
 
-class ImageToGcode():
+class imageToGcode():
 
     def __init__(self,
                  img,
@@ -161,7 +161,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    imageProcessor = ImageToGcode(img = args.input,
+    imageProcessor = imageToGcode(img = args.input,
                                   origin = ast.literal_eval(args.origin),
                                   home = ast.literal_eval(args.home),
                                   area = ast.literal_eval(args.area),

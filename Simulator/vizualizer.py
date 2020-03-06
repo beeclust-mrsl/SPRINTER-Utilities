@@ -33,8 +33,8 @@ class vizualize():
 		self.circle = Circle((0, 0), radius=5, color='r',zorder=3)
 		self.ax.add_patch(self.circle)
 
-		Writer = animation.writers['ffmpeg']
-		self.writer = Writer(fps=15, metadata=dict(artist='Me'), bitrate=1800)
+		# Writer = animation.writers['ffmpeg']
+		# self.writer = Writer(fps=15, metadata=dict(artist='Me'), bitrate=1800)
 
 
 	def appendPath(self, x, y):
