@@ -96,7 +96,7 @@ class cKMeans():
 
 if __name__ == '__main__':
 	test = cKMeans('./BMP/test4.bmp')
-	# roi = ROISlicer.imageSlice('./BMP/test4.bmp')
+	roi = ROISlicer.imageSlice('./BMP/test4.bmp')
 
 	data, numPoints = test.kMeans()
 	print(np.shape(data))
@@ -111,6 +111,6 @@ if __name__ == '__main__':
 	print('Elapsed:', (time.time() - t) * 1000, 'ms')
 	print('C:', C)
 
-	# roi.getVoronoi(C)
-	# roi.saveBMP()
+	roi.getVoronoi(C)
+	roi.saveBMP()
 
