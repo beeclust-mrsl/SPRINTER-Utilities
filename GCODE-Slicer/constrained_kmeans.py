@@ -3,6 +3,9 @@ import networkx as nx
 import numpy as np
 import time
 
+from matplotlib import pyplot as plt
+from scipy.spatial import Voronoi, voronoi_plot_2d
+
 
 def constrained_kmeans(data, demand, maxiter=None, fixedprec=1e9):
 	data = np.array(data)
@@ -71,13 +74,23 @@ def constrained_kmeans(data, demand, maxiter=None, fixedprec=1e9):
 
 
 def main():
-	data = np.random.random((100, 3))
+	data = np.random.random((100, 2))
 	t = time.time()
 	(C, M, f) = constrained_kmeans(data, [25, 25, 25])
 	print('Elapsed:', (time.time() - t) * 1000, 'ms')
 	print('C:', C)
 	print('M:', M)
+
+	unique, counts = np.unique(M, return_counts=True)
+	a = dict(zip(unique, counts))
+	print(a)
+
 	
+	vor = Voronoi(C)
+	voronoi_plot_2d(vor)
+	plt.scatter(C[:,0], C[:,1])
+	plt.scatter(data[:,0], data[:,1])
+	plt.show()
 
 if __name__ == '__main__':
 	main()

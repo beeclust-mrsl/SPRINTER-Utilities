@@ -27,6 +27,7 @@ class imageSlice():
 	def getVoronoi(self, centroids):
 		sliceNum = np.shape(centroids)[0]
 
+		yolo = 255 * np.ones(self.img.shape, dtype = self.img.dtype)
 		self.slice = 255 * np.ones(self.img.shape, dtype = self.img.dtype)
 		self.slice = np.array([255 * np.ones(self.img.shape, dtype = self.img.dtype) for i in range(sliceNum)])
 
@@ -34,7 +35,14 @@ class imageSlice():
 			dist = [(math.sqrt((x - i[0])**2 + (y - i[1])**2), i)[0] for i in centroids]
 			indexMin = dist.index(min(dist))
 
+			yolo[y][x] = indexMin*10
+
 			self.slice[indexMin][y][x] = self.img[y][x]
+
+		yolo = cv2.applyColorMap(yolo, cv2.COLORMAP_HSV)
+		cv2.imshow('nice' ,yolo)
+		cv2.imshow('orig', self.img)
+		cv2.waitKey(0)
 
 		for i in range(sliceNum):
 			cv2.imshow('Slice'+str(i), self.slice[i])
