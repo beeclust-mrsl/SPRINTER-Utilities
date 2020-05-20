@@ -37,12 +37,15 @@
     }
   }
 };*/
-char ssid[] = "Avinash";        
-char pass[] = "password";         
+char ssid[] = "aarg";        
+char pass[] = "aargnet123";
+         
 uint8_t buf2[30];
 uint8_t i2=0;
-IPAddress server(192,168,43,95);
+
+IPAddress server(192,168,1,117);
 WiFiClient client;
+
 long int i = 0;
 /*  Flasher led(4, 300, 600);
   Flasher blue(12, 200, 600);
@@ -50,12 +53,18 @@ long int i = 0;
   Flasher green(16, 800, 600); 
 */
 void setup() {
+  
+  pinMode(4, OUTPUT);
+  digitalWrite(4, LOW);
+  
   Serial.begin(115200);
-  WiFi.begin(ssid, pass);      
+  WiFi.begin(ssid, pass);
+  
   while (WiFi.status() != WL_CONNECTED) {
-     Serial.print(".");
-     delay(500);
-    //  led.Update();
+    digitalWrite(4, HIGH);
+    delay(1000);
+    digitalWrite(4, LOW);
+    delay(1000);
   }
  
      while(!client.connect(server, 8080)) {
@@ -70,10 +79,12 @@ void loop () {
   }
 
   if(Serial.available()>0){
+    
     while(Serial.available()){
       buf2[i2] = (char)Serial.read();
       if(i2<30) i2++;
     }
+    
     client.write((char*)buf2,30);
     i2 = 0;
   }

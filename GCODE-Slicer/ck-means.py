@@ -96,6 +96,10 @@ class cKMeans():
 				# Max iterations reached
 				return (C, M, f)
 
+		def ckTest(self):
+			temp = np.array([i for i in range(10)])
+			temp = temp * constrained_kmeans([100,200])
+
 
 if __name__ == '__main__':
 	test = cKMeans('./BMP/test4.bmp')
@@ -105,7 +109,7 @@ if __name__ == '__main__':
 	# data = np.random.random((100, 2))
 	# numPoints = 100
 	print(np.shape(data))
-	numBots = 100
+	numBots = 3
 	print(numPoints)
 
 	demand = (numPoints - (numPoints%numBots))/numBots

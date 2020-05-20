@@ -42,15 +42,16 @@ class simulate():
 if __name__ == '__main__':
 
 	simulator1 = simulate(path = 'sample.gcode' , timeStep = 1)
-	simulator2 = simulate(path = 'test.gcode' , timeStep = 1)
+	simulator1.main()
+	# simulator2 = simulate(path = 'test.gcode' , timeStep = 1)
 
-	sprinterOne = threading.Thread(target = simulator1.main)
-	sprinterTwo = threading.Thread(target = simulator2.main)
+	# sprinterOne = threading.Thread(target = simulator1.main)
+	# sprinterTwo = threading.Thread(target = simulator2.main)
 
-	sprinterOne.start()
-	sprinterTwo.start()
+	# sprinterOne.start()
+	# sprinterTwo.start()
 
-	sprinterOne.join()	
-	sprinterTwo.join()
+	# sprinterOne.join()	
+	# sprinterTwo.join()
 
 	print("Printing Over!")
