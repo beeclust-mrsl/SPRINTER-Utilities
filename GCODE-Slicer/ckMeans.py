@@ -154,7 +154,7 @@ class ckMeans():
 		self.ax3.clear()
 		self.ax3.set_title('(c) Pixels Per Cell')
 		self.ax3.set_xlabel('Iteration')
-		self.ax3.set_ylabel('No. of \'Printable\' Pixels')
+		self.ax3.set_ylabel('No. of Pixels')
 		for i in range(len(self.clusterLen)):
 			self.ax3.plot(axis, self.clusterLen[i], '--o', label = 'Cluster %d' % (i+1))
 			self.ax3.legend(frameon=False, fontsize = 'xx-small')

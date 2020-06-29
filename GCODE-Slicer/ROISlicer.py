@@ -63,6 +63,6 @@ if __name__ == '__main__':
 	img  = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
 
 	test = imageSlice(image = img, path = path)
-	test.getVoronoi([(100,250), (300,250), (250,100), (250,300)])
+	test.getVoronoi([(319.03,348.03), (212.21,116.42), (153.56,225.40), (299.30,187.57), (169.99,352.92)])
 	test.saveBMP()
 	
