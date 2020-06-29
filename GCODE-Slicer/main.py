@@ -13,6 +13,7 @@ ckm = ckMeans(img, numRobots, iterations)
 vor = imageSlice(img, imagePath)
 
 means = ckm.ckmMain()
+vor.
 
 
 

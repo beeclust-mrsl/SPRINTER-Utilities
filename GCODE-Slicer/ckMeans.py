@@ -28,13 +28,13 @@ class ckMeans():
 
 		# self.ax1.set_xlim([0, self.xMax])
 		# self.ax1.set_ylim([0, self.yMax])
-		self.ax1.set_title('Voronoi Slices')
-		self.ax2.set_title('Optimization Objective Cost')
+		self.ax1.set_title('(a) Geodesic Cells')
+		self.ax2.set_title('(b) Optimization Cost')
 		self.ax2.set_xlabel('Iteration')
 		self.ax2.set_ylabel('Objective Cost')
 		self.ax4.set_xlim([0, self.xMax])
 		self.ax4.set_ylim([0, self.yMax])
-		self.ax4.set_title('CK-means Centroids')
+		self.ax4.set_title('(d) K-means Centroids')
 		# plt.axis([0, 500, 0, 500])
 
 
@@ -134,6 +134,7 @@ class ckMeans():
 				print(self.mu)
 		print('Voronoi')
 		self.plotVor()
+		print('Means:', self.mu)
 		plt.show()
 		return self.mu
 
@@ -151,9 +152,9 @@ class ckMeans():
 	def plotSize(self):
 		axis = [i for i in range(len(self.clusterLen[0]))]
 		self.ax3.clear()
-		self.ax3.set_title('Pixels Per Cluster')
+		self.ax3.set_title('(c) Pixels Per Cell')
 		self.ax3.set_xlabel('Iteration')
-		self.ax3.set_ylabel('No. of Pixels')
+		self.ax3.set_ylabel('No. of \'Printable\' Pixels')
 		for i in range(len(self.clusterLen)):
 			self.ax3.plot(axis, self.clusterLen[i], '--o', label = 'Cluster %d' % (i+1))
 			self.ax3.legend(frameon=False, fontsize = 'xx-small')
@@ -176,7 +177,7 @@ class ckMeans():
 		vor = Voronoi(self.mu)
 		self.ax1.imshow(self.img, cmap = 'gray')
 		voronoi_plot_2d(vor, ax = self.ax1, show_vertices = False, line_colors = 'orange')
-		self.ax1.set_xlim(self.xMax,0)
+		self.ax1.set_xlim(0, self.xMax)
 		self.ax1.set_ylim(self.yMax,0)
 		
 
@@ -185,6 +186,6 @@ class ckMeans():
 if __name__ == '__main__':
 	clusters = 5
 	img  = cv2.imread('./BMP/test4.bmp', cv2.IMREAD_GRAYSCALE)
-	iterations = 5
+	iterations = 10
 	test = ckMeans(img, clusters, iterations)
 	test.ckmMain()
