@@ -185,7 +185,7 @@ class ckMeans():
 
 if __name__ == '__main__':
 	clusters = 5
-	img  = cv2.imread('./BMP/test4.bmp', cv2.IMREAD_GRAYSCALE)
-	iterations = 10
+	img  = cv2.imread('./BMP/rnd2.bmp', cv2.IMREAD_GRAYSCALE)
+	iterations = 5
 	test = ckMeans(img, clusters, iterations)
 	test.ckmMain()
